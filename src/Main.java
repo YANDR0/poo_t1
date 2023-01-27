@@ -3,10 +3,11 @@ import javax.swing.JOptionPane;
 public class Main {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
 
         //practica_1();
         //practica_2();
+        practica_3();
     }
 
 
@@ -81,13 +82,41 @@ public class Main {
         double uma_1 = Double.parseDouble(JOptionPane.showInputDialog(null, "UMA del año anterior: "));
         double uma_2 = Double.parseDouble(JOptionPane.showInputDialog(null, "UMA de este año: "));
 
+        //Formula
         double porcentaje = (uma_2 - uma_1)/uma_1 * 100;
 
+        //Impresión
         JOptionPane.showMessageDialog(null, String.format("La inflación fue de %.1f%%", porcentaje));
     }
 
 
     static void practica_3(){
+
+        //Entrada de datos
+        String telefono = JOptionPane.showInputDialog(null, "Escriba el número");
+        if(telefono == null || telefono.equals(""))
+            return;
+        String guardadito = telefono;
+
+        //Limpieza del string
+        telefono = telefono.replace(" ", "");
+        telefono = telefono.replace("(","").replace(")","");
+        telefono = telefono.replaceAll("-", "");
+
+        String lada = telefono.substring(0,2);
+
+        //Identificación del número
+        if(telefono.length() != 10) {
+            JOptionPane.showMessageDialog(null, String.format("El telefono %s no es valido", guardadito));
+            return;
+        }
+
+        if(lada.equals("33"))
+            JOptionPane.showMessageDialog(null, String.format("El telefono %s es de Guadalajara", guardadito));
+        else if (lada.equals("55"))
+            JOptionPane.showMessageDialog(null, String.format("El telefono %s es de la CDMX", guardadito));
+        else if (lada.equals("81"))
+            JOptionPane.showMessageDialog(null, String.format("El telefono %s es de Monterrey", guardadito));
 
     }
 
